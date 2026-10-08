@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%2032%2032%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230284c7%22/><text y=%2222%22 x=%226%22 font-family=%22Arial%22 font-weight=%22bold%22 font-size=%2218%22 fill=%22white%22>J</text></svg>">
 </head>
 <body>
@@ -734,6 +736,26 @@
         </div>
     </a>
 
-    <script src="/static/js/app.js"></script>
+    <script>
+        (function() {
+            var script = document.createElement('script');
+            if (window.location.protocol === 'file:') {
+                script.src = '../static/js/app.js';
+                script.onerror = function() {
+                    var s2 = document.createElement('script');
+                    s2.src = 'static/js/app.js';
+                    document.body.appendChild(s2);
+                };
+            } else {
+                script.src = '/static/js/app.js';
+                script.onerror = function() {
+                    var s2 = document.createElement('script');
+                    s2.src = '../static/js/app.js';
+                    document.body.appendChild(s2);
+                };
+            }
+            document.body.appendChild(script);
+        })();
+    </script>
 </body>
 </html>

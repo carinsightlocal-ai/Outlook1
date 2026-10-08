@@ -2,7 +2,16 @@
 // Animated Temp Outlook - OTP Fetcher Pro (Core Logic System)
 // ==========================================================================
 
-// Global Application State
+// Global Application State & Auto Backend Resolution
+const API_BASE = (window.location.protocol === 'file:' || !window.location.port) ? 'http://localhost:8000' : '';
+const _nativeFetch = window.fetch;
+window.fetch = function(url, options) {
+    if (typeof url === 'string' && url.startsWith('/api/')) {
+        url = `${API_BASE}${url}`;
+    }
+    return _nativeFetch.call(this, url, options);
+};
+
 let currentUserEmail = localStorage.getItem('temp_outlook_master_email') || null;
 let currentUserApiKey = localStorage.getItem('temp_outlook_api_key') || null;
 let currentAccount = null;
@@ -884,7 +893,8 @@ function setupWebSocket(accountId) {
         try { ws.close(); } catch (e) {}
     }
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}/ws/${accountId}`;
+    const wsHost = (window.location.protocol === 'file:' || !window.location.host) ? 'localhost:8000' : window.location.host;
+    const wsUrl = `${protocol}//${wsHost}/ws/${accountId}`;
     
     try {
         ws = new WebSocket(wsUrl);
