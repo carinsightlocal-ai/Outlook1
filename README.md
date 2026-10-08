@@ -1,69 +1,56 @@
-# Jaun Fetch Otp - OTP Fetcher Pro ⚡
+# Jaun Fetch Otp - OTP Fetcher Pro (Website Edition) ⚡
 
-Ultra-modern, highly animated, and lightweight edition of **Jaun Fetch Otp**.
-
----
-
-## 📞 Official Support & Orders
-- **WhatsApp Support**: `03361849934` (International: `+923361849934`)
-- **Direct WhatsApp Link**: [https://wa.me/923361849934](https://wa.me/923361849934)
-- **🔥 Buy Outlook & Hotmail Accounts**: Only **Price 10 PKR / Account**!
-  - 100% Instant OTP working
-  - Clean mailboxes for Facebook, WhatsApp & Social Media
-  - Order directly on WhatsApp with 1-click delivery
+Clean, standalone website project directory optimized for **Local Development** and **Vercel Serverless Cloud Deployment**.
 
 ---
 
-## 🌟 Key Highlights
-
-- **⚡ Total Size**: Less than **1 MB** (Well under 100 MB).
-- **📁 Total Files**: Only **7 files** (Well under 100 files).
-- **📱 Mobile Responsive**: Silky smooth mobile layout with touch optimization, compact navigation & floating WhatsApp button.
-- **🔄 Identical Workflow**: Exactly identical backend routes, database compatibility, Master Email + 4-Digit PIN authentication, Bulk Facebook OTP Checker, Developer API v1, and multi-profile Chrome launching.
-- **🎨 Next-Gen Animated UI/UX**:
-  - Ambient floating mesh glow background orbs with smooth CSS keyframe movement.
-  - Cyberpunk-grade glassmorphism with dynamic border lighting and backdrop blur.
-  - Interactive micro-animations on every button and action (ripple effects, copy checkmarks, toast notifications).
-  - Built-in **Digital Harmonic Chime** synthesized live via HTML5 Web Audio API (0 MB audio file needed!).
-  - Glowing spotlight card that pulses to life upon arrival of new OTP codes.
-  - Live animated radar pulse animation when waiting for new messages.
-
----
-
-## 📂 Project Directory Structure
+## 📁 Folder Structure
 
 ```text
-animated_outlook_otp/
-├── data/                    # Auto-synchronized with existing database.json
+outlook_otp_website/
+├── api/
+│   └── index.py            # Vercel entrypoint
+├── data/
+│   └── database.json       # User profiles & account storage
 ├── static/
 │   ├── css/
-│   │   └── style.css        # State-of-the-art animations & mobile responsive styles
+│   │   └── style.css       # Animated UI & responsive styling
 │   └── js/
-│       └── app.js           # Audio synthesis, WebSocket, modals, & workflow logic
+│       └── app.js          # Interactive frontend & Web Audio synthesis
 ├── templates/
-│   └── index.html           # Semantic, animated HTML5 interface with WhatsApp Ads
-├── requirements.txt         # Minimal FastAPI & Uvicorn dependencies
-├── run.bat                  # 1-Click launcher batch script
-├── server.py                # FastAPI backend with identical API & IMAP integration
-└── README.md                # Project documentation
+│   └── index.html          # Main HTML template
+├── .gitignore              # Git ignore rules
+├── .vercelignore           # Vercel package optimization
+├── requirements.txt        # FastAPI, Uvicorn, and dependencies
+├── run.bat                 # 1-Click local runner
+├── server.py               # Complete FastAPI backend
+└── vercel.json             # Vercel deployment configuration
 ```
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run Locally
 
-### Method 1: 1-Click Launcher (Windows)
-Double-click:
-```bat
-run.bat
+Double-click `run.bat` or run:
+
+```bash
+uvicorn server:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### Method 2: Command Line
-```powershell
-pip install -r requirements.txt
-python server.py
-```
+Open: [http://localhost:8000](http://localhost:8000)
 
-Then open in your browser:
-- **Local URL**: `http://localhost:8000`
-- **Mobile Network URL**: `http://<YOUR_IP>:8000`
+---
+
+## ☁️ How to Deploy to Vercel
+
+1. Push this folder to a GitHub repository or navigate inside the folder in your terminal:
+   ```bash
+   cd outlook_otp_website
+   ```
+2. Deploy via Vercel CLI or import repository on [vercel.com](https://vercel.com):
+   ```bash
+   vercel --prod
+   ```
+3. Test your live deployment:
+   - Health check: `https://<your-project>.vercel.app/api/health`
+   - Dashboard: `https://<your-project>.vercel.app/`

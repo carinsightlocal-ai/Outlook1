@@ -23,6 +23,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 app = FastAPI(title="Jaun Fetch Otp - OTP Fetcher Pro", version="3.5.0")
+handler = app
 
 app.add_middleware(
     CORSMiddleware,
@@ -32,20 +33,39 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+IS_SERVERLESS = bool(os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
+
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(APP_DIR)
 
-DATA_DIR = os.path.join(APP_DIR, "data")
+if IS_SERVERLESS:
+    DATA_DIR = "/tmp/data"
+    CHROME_PROFILES_DIR = "/tmp/chrome_profiles"
+else:
+    DATA_DIR = os.path.join(APP_DIR, "data")
+    CHROME_PROFILES_DIR = os.path.join(APP_DIR, "chrome_profiles")
+
 STATIC_DIR = os.path.join(APP_DIR, "static")
 TEMPLATES_DIR = os.path.join(APP_DIR, "templates")
 DB_FILE = os.path.join(DATA_DIR, "database.json")
 PARENT_DB_FILE = os.path.join(PARENT_DIR, "data", "database.json")
-CHROME_PROFILES_DIR = os.path.join(APP_DIR, "chrome_profiles")
 
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(STATIC_DIR, exist_ok=True)
-os.makedirs(TEMPLATES_DIR, exist_ok=True)
-os.makedirs(CHROME_PROFILES_DIR, exist_ok=True)
+try:
+    os.makedirs(DATA_DIR, exist_ok=True)
+except Exception:
+    pass
+
+try:
+    os.makedirs(CHROME_PROFILES_DIR, exist_ok=True)
+except Exception:
+    pass
+
+if not IS_SERVERLESS:
+    try:
+        os.makedirs(STATIC_DIR, exist_ok=True)
+        os.makedirs(TEMPLATES_DIR, exist_ok=True)
+    except Exception:
+        pass
 
 # Copy parent database if local does not exist so existing accounts are preserved
 if not os.path.exists(DB_FILE) and os.path.exists(PARENT_DB_FILE):
@@ -54,7 +74,8 @@ if not os.path.exists(DB_FILE) and os.path.exists(PARENT_DB_FILE):
     except Exception as e:
         print(f"Initial DB copy notice: {e}")
 
-app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+if os.path.exists(STATIC_DIR):
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 # ----------------- Database Management -----------------
 def hash_pin(pin: str) -> str:
@@ -62,6 +83,22 @@ def hash_pin(pin: str) -> str:
 
 def generate_api_key() -> str:
     return f"otp_live_{secrets.token_hex(16)}"
+
+def save_db(db_data: dict):
+    try:
+        os.makedirs(os.path.dirname(DB_FILE), exist_ok=True)
+        with open(DB_FILE, "w", encoding="utf-8") as f:
+            json.dump(db_data, f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+    # Also keep parent database in sync if available and not serverless
+    if not IS_SERVERLESS:
+        try:
+            if os.path.exists(os.path.dirname(PARENT_DB_FILE)):
+                with open(PARENT_DB_FILE, "w", encoding="utf-8") as f:
+                    json.dump(db_data, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass
 
 def load_db() -> dict:
     if os.path.exists(DB_FILE):
@@ -78,16 +115,6 @@ def load_db() -> dict:
             pass
     return {"users": {}}
 
-def save_db(db_data: dict):
-    with open(DB_FILE, "w", encoding="utf-8") as f:
-        json.dump(db_data, f, indent=2, ensure_ascii=False)
-    # Also keep parent database in sync if available
-    try:
-        if os.path.exists(os.path.dirname(PARENT_DB_FILE)):
-            with open(PARENT_DB_FILE, "w", encoding="utf-8") as f:
-                json.dump(db_data, f, indent=2, ensure_ascii=False)
-    except Exception:
-        pass
 
 def ensure_user_api_keys(db_data: dict) -> bool:
     updated = False
@@ -559,10 +586,35 @@ class V1AddAccountRequest(BaseModel):
     raw_line: Optional[str] = ""
 
 # ----------------- Application Routes -----------------
+@app.get("/api/health")
+async def health_check():
+    return {
+        "status": "healthy",
+        "service": "Jaun Fetch Otp - OTP Fetcher Pro",
+        "is_serverless": IS_SERVERLESS,
+        "time": datetime.utcnow().isoformat()
+    }
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_index():
-    with open(os.path.join(TEMPLATES_DIR, "index.html"), "r", encoding="utf-8") as f:
-        return f.read()
+    index_path = os.path.join(TEMPLATES_DIR, "index.html")
+    if not os.path.exists(index_path):
+        for candidate in [
+            os.path.join(APP_DIR, "templates", "index.html"),
+            "templates/index.html"
+        ]:
+            if os.path.exists(candidate):
+                index_path = candidate
+                break
+
+    if os.path.exists(index_path):
+        try:
+            with open(index_path, "r", encoding="utf-8") as f:
+                return f.read()
+        except Exception as e:
+            return HTMLResponse(content=f"<h2>Error reading index.html: {e}</h2>", status_code=500)
+    return HTMLResponse(content="<h2>Template index.html not found. Check deployment files.</h2>", status_code=404)
+
 
 @app.post("/api/auth/login")
 async def auth_login(req: PinAuthRequest):
