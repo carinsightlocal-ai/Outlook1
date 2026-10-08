@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jaun Fetch Otp - OTP Fetcher Pro (Animated Edition)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%2032%2032%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230284c7%22/><text y=%2222%22 x=%226%22 font-family=%22Arial%22 font-weight=%22bold%22 font-size=%2218%22 fill=%22white%22>J</text></svg>">
+</head>
+<body>
+
+    <!-- Ambient Mesh Animated Glow Orbs -->
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-glow ambient-glow-3"></div>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="side-backdrop" id="sideBackdrop"></div>
+
+    <div class="app-container">
+
+        <!-- Top Animated Glass Navbar -->
+        <header class="navbar">
+            <div class="logo-group">
+                <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Accounts Panel">
+                    <span class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="btn-label">Accounts</span>
+                </button>
+                <div class="outlook-icon-wrap">
+                    <div class="icon-pulse-ring"></div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>Jaun Fetch Otp <span class="badge-tag">Pro Edition</span></h1>
+                    <p class="tagline">Support WhatsApp: 03361849934 • Buy Outlook & Hotmail @ Price 10</p>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/923361849934?text=Hello%20Jaun%20Support,%20I%20need%20assistance%20with%20Jaun%20Fetch%20Otp." target="_blank" class="nav-btn btn-whatsapp-nav" title="Support: 03361849934">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    <span>💬 WhatsApp: 03361849934</span>
+                </a>
+
+                <button class="nav-btn btn-api-key" id="btnOpenApiKeyModal" title="API Key & Developer Documentation">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="7.5" cy="15.5" r="5.5"></circle>
+                        <path d="m21 2-9.6 9.6"></path>
+                        <path d="m15.5 7.5 3 3L22 7l-3-3"></path>
+                    </svg>
+                    <span>🔑 API Key</span>
+                </button>
+
+                <button class="nav-btn btn-fb-checker" id="btnOpenFbChecker" title="Bulk Facebook OTP Checker & Filter">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Bulk FB OTP</span>
+                </button>
+
+                <button class="nav-btn btn-user-badge" id="userProfileBtn" title="Switch User or Lock PIN">
+                    <span class="user-lock-icon">🔒</span>
+                    <span id="userEmailBadge" class="user-badge-text">Guest Mode</span>
+                </button>
+
+                <button class="nav-btn btn-sound-toggle" id="soundToggle" title="Toggle Sound Chime">
+                    <span id="soundIcon">🔔</span>
+                    <span id="soundText">Sound ON</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 2-COLUMN MAIN LAYOUT: SIDE PANEL + MAIN CONTENT -->
+        <div class="main-layout">
+
+            <!-- ================= SIDE PANEL (ACCOUNTS DRAWER) ================= -->
+            <aside class="side-panel" id="sidePanel">
+                <div class="side-panel-header">
+                    <div class="side-panel-title-row">
+                        <h2>
+                            <span class="header-icon">📁</span>
+                            <span>Outlook Accounts</span>
+                        </h2>
+                        <div class="header-badge-wrap">
+                            <span class="count-badge" id="sideAccountsCount">0</span>
+                            <button class="btn-icon btn-close-mobile" id="btnCloseSidebarMobile" title="Close Drawer">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- Search and A-Z sort -->
+                    <div class="side-search-box">
+                        <span class="search-icon-inside">🔍</span>
+                        <input type="text" id="sideSearchInput" class="side-search-input" placeholder="Search accounts...">
+                        <button class="btn-sort-az" id="btnSortAZ" title="Sort A to Z">🔤 A-Z</button>
+                    </div>
+
+                    <!-- Quick Side Actions -->
+                    <div class="side-actions-row">
+                        <button class="btn-side-action btn-side-import" id="btnOpenBulkModal">
+                            <span>📥</span> Bulk Import
+                        </button>
+                        <button class="btn-side-action btn-side-add" id="btnAddCustom">
+                            <span>➕</span> Add 1
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scrollable list of accounts in side panel -->
+                <div class="side-accounts-list" id="sideAccountsList">
+                    <!-- Rendered via JS -->
+                </div>
+            </aside>
+
+            <!-- ================= MAIN CONTENT PANEL ================= -->
+            <main class="main-content">
+
+                <!-- Buy Outlook & Hotmail Animated Ads Promo Card -->
+                <section class="ads-promo-card" id="adsPromoCard">
+                    <div class="ads-card-bg-glow"></div>
+                    <button class="btn-close-ad" id="btnCloseAd" title="Dismiss Ad">✕</button>
+                    <div class="ads-left">
+                        <div class="ads-badge-group">
+                            <span class="ads-fire-pill">🔥 EXCLUSIVE DEALS</span>
+                            <span class="ads-warranty-pill">🛡️ 6-12 Month Live Warranty</span>
+                            <span class="ads-delivery-pill">⚡ Instant Delivery on WhatsApp</span>
+                        </div>
+                        <h2 class="ads-headline">Buy Fresh Outlook & Hotmail Accounts</h2>
+                        <p class="ads-subheadline">
+                            100% Guaranteed Fresh Accounts with <strong>6 to 12 Months Live Warranty</strong> & Instant Replacement! Perfect for Facebook, WhatsApp, Social OTPs & Business use. Clean mailboxes ready to fetch instant OTP verification codes!
+                        </p>
+                        <div class="ads-perks">
+                            <span class="ads-perk-tag">🛡️ 6-12 Month Live Warranty</span>
+                            <span class="ads-perk-tag">⚡ Instant OTP Working</span>
+                            <span class="ads-perk-tag">✓ Non-Drop Guarantee</span>
+                            <span class="ads-perk-tag">🔑 Full Password Access</span>
+                            <span class="ads-perk-tag">💬 24/7 WhatsApp Support</span>
+                        </div>
+                    </div>
+
+                    <div class="ads-right">
+                        <div class="ads-price-container">
+                            <span class="ads-price-small">Special Price</span>
+                            <div class="ads-price-big">Price: 10 <span class="ads-price-unit">PKR / Account</span></div>
+                            <span class="ads-guarantee">🛡️ 6-12 Months Live Warranty Guaranteed</span>
+                        </div>
+                        <a href="https://wa.me/923361849934?text=Hello%20Jaun,%20I%20want%20to%20buy%20Outlook%20and%20Hotmail%20accounts%20at%20Price%2010%20with%206-12%20Months%20Live%20Warranty.%20Please%20send%20details." target="_blank" class="btn-whatsapp-order">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                            <span>Order on WhatsApp (03361849934)</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Hero: Active Outlook Card with Copy Email & Copy Password -->
+                <section class="hero-card">
+                    <div class="hero-card-header">
+                        <span class="card-subtitle">
+                            <span class="active-pulse-indicator"></span>
+                            Active Outlook Mailbox
+                        </span>
+                        <div class="auto-refresh-pill">
+                            <svg class="spin-icon-hover" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            <span>Auto check:</span>
+                            <span class="refresh-timer" id="refreshTimer">10s</span>
+                        </div>
+                    </div>
+
+                    <!-- Email address bar with Copy Email button -->
+                    <div class="email-box-wrapper">
+                        <div class="email-display" id="emailDisplay">Loading Outlook Address...</div>
+                        <button class="btn-copy-email btn-copy-hero" id="btnCopyEmail" title="Copy Email Address">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                            <span>📋 Copy Mail</span>
+                        </button>
+                    </div>
+
+                    <!-- Password bar with Copy Password button -->
+                    <div class="hero-password-wrapper">
+                        <div class="pass-info-group">
+                            <span class="pass-label">Password:</span>
+                            <span class="pass-display" id="heroPasswordDisplay">••••••••</span>
+                        </div>
+                        <div class="pass-btn-group">
+                            <button class="btn-copy-pass-hero" id="btnHeroCopyPass" title="Copy Password">
+                                <span>🔑</span> Copy Password
+                            </button>
+                            <button class="btn-copy-pass-hero btn-combo-pass" id="btnHeroCopyAll" title="Copy Email|Password combo">
+                                <span>⚡</span> Copy Mail|Pass
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recovery Email bar (shown if account has recovery info) -->
+                    <div class="hero-password-wrapper hero-recovery-wrapper" id="heroRecoveryWrapper" style="display: none;">
+                        <div class="pass-info-group">
+                            <span class="pass-label recovery-label">Recovery:</span>
+                            <span class="pass-display recovery-display" id="heroRecoveryDisplay"></span>
+                        </div>
+                        <div class="pass-btn-group">
+                            <button class="btn-copy-pass-hero btn-rec-action" id="btnHeroCopyRecMail" title="Copy Recovery Email">
+                                <span>🛡️</span> Copy Rec Mail
+                            </button>
+                            <button class="btn-copy-pass-hero btn-rec-action" id="btnHeroCopyRecPass" title="Copy Recovery Password">
+                                <span>🔐</span> Copy Rec Pass
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Action Controls -->
+                    <div class="hero-controls">
+                        <button class="btn-secondary btn-accent-glow" id="btnHeroBulkImport">
+                            <span>📥</span> Bulk Import
+                        </button>
+                        <button class="btn-secondary" id="btnHeroAddCustom">
+                            <span>➕</span> Add 1 Outlook
+                        </button>
+                        <button class="btn-secondary btn-chrome-glow" id="btnLaunchChrome" title="Open Google Chrome with a dedicated profile for this Outlook account">
+                            <span>🌐</span> Open in Chrome
+                        </button>
+                        <button class="btn-secondary btn-refresh-glow" id="btnRefresh">
+                            <span>⚡</span> Refresh Inbox
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Spotlight OTP Alert (Shown dynamically when OTP arrives) -->
+                <section class="otp-spotlight" id="otpSpotlight" style="display: none;">
+                    <div class="spotlight-glass-bg"></div>
+                    <div class="spotlight-info">
+                        <div class="spotlight-icon-wrap">
+                            <div class="spotlight-icon">⚡</div>
+                            <div class="spotlight-rings"></div>
+                        </div>
+                        <div class="spotlight-text">
+                            <h3 id="spotlightService">Latest OTP Received</h3>
+                            <p id="spotlightSender">One-Time Verification Code detected</p>
+                        </div>
+                    </div>
+                    <div class="spotlight-otp-box">
+                        <div class="otp-huge-code" id="spotlightCode">------</div>
+                        <button class="btn-copy-otp btn-spotlight-copy" id="btnCopySpotlightOtp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                            <span>Copy OTP</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Real Outlook Live Sync & OTP Control Bar -->
+                <section class="test-bar-card live-sync-card">
+                    <div class="test-bar-label">
+                        <span class="live-status-dot" id="liveSyncStatusDot">🟢</span>
+                        <span id="liveSyncStatusText" class="sync-status-highlight">Real Outlook Sync Active</span>
+                        <span id="liveSyncStatusSub" class="sync-sub-text">(Direct Microsoft API connected)</span>
+                    </div>
+                    <div class="service-pills">
+                        <button class="btn-service-pill btn-sync-live" id="btnSyncNow">
+                            <span id="syncSpinner" class="sync-spin-icon">⚡</span> <span id="syncBtnText">Fetch Live Outlook Mails</span>
+                        </button>
+                        <button class="btn-service-pill btn-sync-all" id="btnSyncAllAccounts" title="Check new emails for all accounts">
+                            <span>🔄</span> Sync All Accounts
+                        </button>
+                        <button class="btn-service-pill btn-filter-otp" id="btnFilterOtpsOnly" title="Show only emails containing OTP codes">
+                            <span>⚡</span> Show All OTPs (<span id="allOtpsCount">0</span>)
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Quick Real OTPs List Row -->
+                <div class="real-otps-summary" id="realOtpsSummary" style="display: none;">
+                    <div class="summary-label-row">
+                        <span class="summary-icon">🔑</span>
+                        <span class="summary-title">All Outlook OTPs for this Account:</span>
+                    </div>
+                    <div class="real-otps-chips" id="realOtpsChips"></div>
+                </div>
+
+                <!-- Live Inbox -->
+                <section class="inbox-card">
+                    <div class="inbox-header">
+                        <div class="inbox-title-group">
+                            <h2>Inbox Messages</h2>
+                            <span class="count-badge count-emails" id="emailCount">0</span>
+                            <span class="count-badge unread-badge" id="unreadBadge">0 unread</span>
+                        </div>
+                        <div class="inbox-controls">
+                            <button class="btn-secondary btn-clear-inbox" id="btnClearInbox">
+                                🗑️ Clear Inbox
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Email rows -->
+                    <ul class="email-list" id="emailList">
+                        <!-- Rendered dynamically via JS -->
+                    </ul>
+
+                    <!-- Empty Inbox Radar Animation -->
+                    <div class="inbox-empty" id="inboxEmpty">
+                        <div class="empty-radar">
+                            <div class="radar-circle circle-1"></div>
+                            <div class="radar-circle circle-2"></div>
+                            <div class="radar-circle circle-3"></div>
+                            <span class="radar-sweep">📡</span>
+                        </div>
+                        <h3>Waiting for incoming emails & OTPs...</h3>
+                        <p>Use your active Outlook address above on any website or app. Received messages and OTPs will appear here automatically.</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Floating Bulk Selection Action Bar -->
+    <div class="bulk-selection-bar" id="bulkSelectionBar">
+        <div class="selected-count-badge">
+            <span id="selectedCountText">0 Accounts Selected</span>
+        </div>
+        <div class="bulk-action-buttons">
+            <button class="btn-secondary btn-chrome-glow" id="btnBulkLaunchChrome">
+                🚀 Open Chrome (All Selected)
+            </button>
+            <button class="btn-secondary btn-delete-glow" id="btnBulkDelete">
+                🗑️ Delete Selected
+            </button>
+            <button class="btn-secondary" id="btnDeselectAll">
+                ✕ Cancel
+            </button>
+        </div>
+    </div>
+
+    <!-- 1. PIN Auth Modal -->
+    <div class="modal-overlay" id="pinAuthModal">
+        <div class="modal-content pin-auth-card">
+            <div class="modal-header header-center">
+                <div class="modal-title">
+                    <div class="pin-lock-graphic">🔐</div>
+                    <h3>Enter 4-Digit PIN Access</h3>
+                    <p class="pin-instructions">
+                        Enter your Master Email and 4-Digit PIN to save & load all your Outlook accounts
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-body pin-modal-body">
+                <label class="input-field-label">
+                    Your Master Email / Username:
+                </label>
+                <input type="email" id="authEmailInput" class="styled-input" placeholder="name@domain.com (e.g. jaun@gmail.com)">
+
+                <label class="input-field-label text-center">
+                    Enter 4-Digit PIN (e.g. 1234):
+                </label>
+                <div class="pin-input-group">
+                    <input type="password" inputmode="numeric" maxlength="1" class="pin-digit-box" id="pin1" autofocus>
+                    <input type="password" inputmode="numeric" maxlength="1" class="pin-digit-box" id="pin2">
+                    <input type="password" inputmode="numeric" maxlength="1" class="pin-digit-box" id="pin3">
+                    <input type="password" inputmode="numeric" maxlength="1" class="pin-digit-box" id="pin4">
+                </div>
+
+                <p id="authErrorMsg" class="auth-error-msg" style="display: none;"></p>
+            </div>
+
+            <div class="modal-footer footer-center">
+                <button class="btn-copy-email btn-unlock-full" id="btnSubmitPinAuth">
+                    🔓 Unlock & Access Accounts
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Bulk Import Modal -->
+    <div class="modal-overlay" id="bulkImportModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h3>📥 Bulk Import Outlook Accounts</h3>
+                    <p class="modal-subtitle">
+                        Paste multiple accounts line-by-line (format: <code>email:password</code> or <code>email|password</code> or just <code>email</code>)
+                    </p>
+                </div>
+                <button class="btn-icon" id="btnCloseBulkModal">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <textarea id="bulkInputArea" rows="8" placeholder="account1@outlook.com:Pass123&#10;account2@outlook.com:Pass456&#10;account3@hotmail.com" class="styled-textarea mono-font"></textarea>
+                
+                <div class="bulk-detect-footer">
+                    <span id="bulkDetectCount" class="detect-pill">0 accounts detected</span>
+                    <button class="btn-secondary btn-small" id="btnClearBulkText">Clear</button>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" id="btnCancelBulkModal">Cancel</button>
+                <button class="btn-copy-email btn-modal-action" id="btnDoBulkImport">
+                    🚀 Import All Accounts
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Email Detail Modal -->
+    <div class="modal-overlay" id="emailModal">
+        <div class="modal-content modal-email-view">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h3 id="modalSubject">Email Subject</h3>
+                    <div class="modal-meta">
+                        <span id="modalFrom" class="meta-from">Sender</span>
+                        <span class="meta-bullet">•</span>
+                        <span id="modalTime" class="meta-time">Time</span>
+                    </div>
+                </div>
+                <button class="btn-icon" id="btnCloseModal">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-otp-callout" id="modalOtpSection" style="display: none;">
+                    <div>
+                        <div class="otp-callout-tag">Detected OTP Code</div>
+                        <div id="modalOtpCode" class="otp-callout-code">------</div>
+                    </div>
+                    <button class="btn-copy-otp btn-callout-copy" id="btnCopyModalOtp">
+                        ⚡ Copy Code
+                    </button>
+                </div>
+
+                <div id="modalBody" class="modal-email-body-content">
+                    <!-- HTML body inserted here -->
+                </div>
+            </div>
+
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button class="btn-secondary btn-delete-glow" id="btnDeleteCurrentEmail">
+                    🗑️ Delete This Mail
+                </button>
+                <button class="btn-secondary" onclick="document.getElementById('emailModal').classList.remove('active')">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Add Single Custom Outlook Modal -->
+    <div class="modal-overlay" id="customModal">
+        <div class="modal-content modal-medium">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h3>Add Outlook Account</h3>
+                    <p class="modal-subtitle">Enter single Outlook email & password</p>
+                </div>
+                <button class="btn-icon" id="btnCloseCustomModal">✕</button>
+            </div>
+
+            <div class="modal-body form-column-gap">
+                <div>
+                    <label class="input-field-label">Outlook Email Address</label>
+                    <input type="email" id="customEmailInput" placeholder="example@outlook.com or @hotmail.com" class="styled-input">
+                </div>
+
+                <div>
+                    <label class="input-field-label">Password</label>
+                    <input type="text" id="customPasswordInput" placeholder="Enter password" class="styled-input">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" id="btnCancelCustomModal">Cancel</button>
+                <button class="btn-copy-email btn-modal-action" id="btnSaveCustomAccount">Save Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Bulk FB OTP Checker Session Modal -->
+    <div class="modal-overlay fb-checker-modal-overlay" id="fbCheckerModal">
+        <div class="modal-content fb-checker-window">
+            <div class="modal-header fb-modal-header">
+                <div class="modal-title fb-title-cluster">
+                    <div class="fb-logo-circle">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="fb-heading">
+                            Bulk Facebook OTP Checker & Filter
+                            <span class="fb-pro-badge">PRO FILTER</span>
+                        </h3>
+                        <p class="fb-subheading">
+                            Live check FB OTPs • Left: Without FB Mail • Right: With FB OTP • 1-Click .txt Download
+                        </p>
+                    </div>
+                </div>
+                <button class="btn-icon" id="btnCloseFbChecker" title="Close">✕</button>
+            </div>
+
+            <div class="fb-controller-box">
+                <div class="fb-input-header">
+                    <div class="fb-input-title-row">
+                        <span class="fb-input-label">📥 Input Bulk Outlook Accounts:</span>
+                        <span id="fbInputCountBadge" class="fb-stat-pill">0 accounts detected</span>
+                    </div>
+                    <div class="fb-input-btn-group">
+                        <button class="btn-side-action" id="btnLoadCurrentToFb">
+                            📋 Load Current Accounts
+                        </button>
+                        <button class="btn-secondary btn-small" id="btnClearFbInput">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                </div>
+
+                <textarea id="fbBulkInputArea" rows="4" placeholder="Paste accounts here line-by-line (format: email|password|token OR email:password OR email|password)&#10;example1@outlook.com|Password123|TokenXYZ&#10;example2@hotmail.com:Password456" class="fb-textarea mono-font"></textarea>
+
+                <div class="fb-actions-bar">
+                    <div class="fb-btn-group">
+                        <button class="btn-fb-start" id="btnStartFbCheck">
+                            <span id="fbStartIcon">🚀</span>
+                            <span id="fbStartText">Start FB OTP Check</span>
+                        </button>
+                        <button class="btn-fb-stop" id="btnStopFbCheck" disabled>
+                            <span>⏹️</span>
+                            <span>Stop Check</span>
+                        </button>
+                    </div>
+
+                    <div class="fb-stats-row">
+                        <div class="fb-stat-item">
+                            <span class="fb-stat-label">Total</span>
+                            <span class="fb-stat-val" id="fbStatTotal">0</span>
+                        </div>
+                        <div class="fb-stat-item">
+                            <span class="fb-stat-label">Checked</span>
+                            <span class="fb-stat-val" id="fbStatChecked">0</span>
+                        </div>
+                        <div class="fb-stat-item stat-without">
+                            <span class="fb-stat-label">Without FB OTP</span>
+                            <span class="fb-stat-val" id="fbStatWithout">0</span>
+                        </div>
+                        <div class="fb-stat-item stat-with">
+                            <span class="fb-stat-label">With FB OTP</span>
+                            <span class="fb-stat-val" id="fbStatWith">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fb-progress-container" id="fbProgressContainer">
+                    <div class="fb-progress-bar" id="fbProgressBar" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <!-- 2-COLUMN SPLIT SESSIONS (LEFT VS RIGHT) -->
+            <div class="fb-split-wrapper">
+
+                <!-- LEFT COLUMN: WITHOUT FB MAIL / NO FB OTP -->
+                <div class="fb-column fb-col-without">
+                    <div class="fb-col-header">
+                        <div class="fb-col-title">
+                            <div class="fb-col-indicator indicator-without"></div>
+                            <h4>Without FB Mail (Outlook Accounts)</h4>
+                            <span class="fb-badge-count count-without" id="fbColWithoutCount">0</span>
+                        </div>
+                        <div class="fb-col-actions">
+                            <button class="btn-fb-action btn-fb-download" id="btnDownloadWithoutFb" title="Download text file of without-OTP accounts">
+                                <span>📥</span> Download .txt
+                            </button>
+                            <button class="btn-fb-action" id="btnCopyWithoutFb" title="Copy all without-OTP accounts">
+                                <span>📋</span> Copy All
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="fb-col-search">
+                        <input type="text" id="searchWithoutFb" placeholder="🔍 Search without FB accounts..." class="fb-search-input">
+                    </div>
+
+                    <div class="fb-accounts-scroll" id="listWithoutFb">
+                        <div class="fb-empty-state">
+                            <div class="empty-state-icon">📭</div>
+                            <p>No accounts checked yet.</p>
+                            <span>Accounts without FB OTP will appear here.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: WITH FB OTP RECEIVED -->
+                <div class="fb-column fb-col-with">
+                    <div class="fb-col-header">
+                        <div class="fb-col-title">
+                            <div class="fb-col-indicator indicator-with"></div>
+                            <h4>FB OTP Received (Facebook Accounts)</h4>
+                            <span class="fb-badge-count count-with" id="fbColWithCount">0</span>
+                        </div>
+                        <div class="fb-col-actions">
+                            <button class="btn-fb-action btn-fb-download-green" id="btnDownloadWithFb" title="Download text file of accounts with OTP">
+                                <span>📥</span> Download .txt
+                            </button>
+                            <button class="btn-fb-action" id="btnCopyWithFb" title="Copy all accounts with OTP">
+                                <span>📋</span> Copy All
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="fb-col-search">
+                        <input type="text" id="searchWithFb" placeholder="🔍 Search FB OTP accounts..." class="fb-search-input">
+                    </div>
+
+                    <div class="fb-accounts-scroll" id="listWithFb">
+                        <div class="fb-empty-state">
+                            <div class="empty-state-icon">🔔</div>
+                            <p>No FB OTPs found yet.</p>
+                            <span>Accounts receiving FB verification code will pop up here!</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer fb-modal-footer">
+                <div class="fb-footer-hint">
+                    💡 Tip: Click "Download .txt" on the left to export clean unused Outlook accounts!
+                </div>
+                <button class="btn-secondary" id="btnCloseFbCheckerBottom">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Developer API Key & Documentation Modal -->
+    <div class="modal-overlay" id="apiKeyModal">
+        <div class="modal-content api-key-window">
+            <div class="modal-header api-key-modal-header">
+                <div class="modal-title api-title-cluster">
+                    <div class="api-key-logo-circle">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="7.5" cy="15.5" r="5.5"></circle>
+                            <path d="m21 2-9.6 9.6"></path>
+                            <path d="m15.5 7.5 3 3L22 7l-3-3"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="api-heading">
+                            Developer API Key & Documentation
+                            <span class="api-badge-tag">REST v1</span>
+                        </h3>
+                        <p class="api-subheading">
+                            Connect your Python bots, scripts, or apps to fetch Outlook OTPs automatically
+                        </p>
+                    </div>
+                </div>
+                <button class="btn-icon" id="btnCloseApiKeyModal">✕</button>
+            </div>
+
+            <div class="modal-body api-key-modal-body">
+                <div class="api-key-box-card">
+                    <div class="api-key-header-row">
+                        <div>
+                            <span class="api-label">Your Unique API Key:</span>
+                            <span class="api-user-email-text">(Associated with <strong id="apiKeyUserEmailDisplay">...</strong>)</span>
+                        </div>
+                        <button class="btn-regen-key" id="btnRegenerateApiKey" title="Generate New Key">
+                            <span>🔄</span> Regenerate Key
+                        </button>
+                    </div>
+
+                    <div class="api-key-input-wrapper">
+                        <input type="password" id="apiKeyDisplayInput" class="api-key-input mono-font" readonly value="Loading API Key...">
+                        <button class="btn-api-vis" id="btnToggleApiKeyVis" title="Show / Hide Key">
+                            <span id="eyeIcon">👁️</span>
+                        </button>
+                        <button class="btn-copy-api-key" id="btnCopyApiKey" title="Copy API Key">
+                            <span>📋</span> Copy Key
+                        </button>
+                    </div>
+                </div>
+
+                <div class="api-docs-container">
+                    <h4 class="api-docs-title">🚀 Fast Integration Guides</h4>
+
+                    <div class="api-tabs-row">
+                        <button class="api-tab active" data-tab="curl">cURL</button>
+                        <button class="api-tab" data-tab="python">Python</button>
+                        <button class="api-tab" data-tab="js">JavaScript (Fetch)</button>
+                        <button class="api-tab" data-tab="node">Node.js</button>
+                    </div>
+
+                    <div class="api-code-wrapper">
+                        <pre class="api-code-block" id="apiCodeDisplay"><code># Select a language tab above to view sample integration code</code></pre>
+                        <button class="btn-copy-code" id="btnCopyApiCode">📋 Copy Snippet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer api-modal-footer">
+                <div class="api-footer-tip">
+                    🔒 Always keep your API key secure. Authenticate using header: <code>X-API-Key: YOUR_KEY</code>
+                </div>
+                <button class="btn-secondary" id="btnCloseApiKeyBottom">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Floating WhatsApp 24/7 Support Widget -->
+    <a href="https://wa.me/923361849934?text=Hello%20Jaun%20Support,%20I%20need%20assistance%20with%20Jaun%20Fetch%20Otp." target="_blank" class="floating-whatsapp-btn" id="floatingWhatsapp" title="WhatsApp Support: 03361849934">
+        <div class="whatsapp-pulse-ring"></div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <div class="whatsapp-badge-text">
+            <span class="wa-top">Support 24/7</span>
+            <span class="wa-phone">03361849934</span>
+        </div>
+    </a>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
